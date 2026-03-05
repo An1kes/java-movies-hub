@@ -7,15 +7,15 @@ import java.io.IOException;
 import java.net.InetSocketAddress;
 
 public class MoviesServer {
-    private final int SERVER_PORT;
+    private  int port;
     private final HttpServer server;
     private final MoviesStore store;
 
     public MoviesServer(MoviesStore store, int port) {
-        SERVER_PORT = port;
+        this.port = port;
         this.store = store;
         try {
-            server = HttpServer.create(new InetSocketAddress(SERVER_PORT), 0);
+            server = HttpServer.create(new InetSocketAddress(port), 0);
             server.createContext("/movies", new MoviesHandler(store));
         } catch (IOException e) {
             throw new RuntimeException("Не удалось создать HTTP‑сервер", e);

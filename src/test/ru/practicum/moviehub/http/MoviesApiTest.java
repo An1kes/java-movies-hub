@@ -28,12 +28,12 @@ public class MoviesApiTest {
     private static MoviesServer server;
     private static HttpClient client;
     private static final com.google.gson.Gson gson = new com.google.gson.Gson();
-    private static final int PORT = 8080;
+    private static final int SERVER_PORT = 8080;
     private static final MoviesStore moviesStore = new MoviesStore();
 
     @BeforeAll
     static void beforeAll() {
-        server = new MoviesServer(moviesStore, PORT);
+        server = new MoviesServer(moviesStore, SERVER_PORT);
         server.start();
 
         client = HttpClient.newBuilder()

@@ -172,17 +172,12 @@ class MoviesHandler extends BaseHttpHandler {
     private List<String> validateMovie(Movie movie) {
         List<String> errors = new ArrayList<>();
 
-        // Проверка пустого title
         if (movie.getTitle() == null || movie.getTitle().trim().isEmpty()) {
             errors.add("Название не может быть пустым");
-        }
-
-        // Проверка длины title
-        else if (movie.getTitle().length() > MAX_TITLE_LENGTH) {
+        } else if (movie.getTitle().length() > MAX_TITLE_LENGTH) {
             errors.add("Длина названия должна быть максимум 100 символов");
         }
 
-        // Проверка года
         int year = movie.getYear();
         if (year < MIN_YEAR) {
             errors.add(String.format("Year must be at least %d", MIN_YEAR));
